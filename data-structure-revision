@@ -1,0 +1,73 @@
+package estrutura_de_dados_revisao;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+public class Principal {
+	static Scanner entrada = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		int[] numeros = adicionarValor();
+
+		System.out.println(Arrays.toString(numeros));
+
+		acharMaior(numeros);
+
+		somarElementos(numeros);
+		
+		System.out.println("O vetor \"numeros\" está ordenado?");
+		System.out.println(verificarOrdem(numeros));
+
+	}
+
+	public static int[] adicionarValor() {
+		int[] numeros = new int[10];
+		int i = 0;
+		int valor;
+		while (i < 10) {
+			System.out.println("Digite um valor inteiro maior que zero:");
+			valor = entrada.nextInt();
+			if (valor <=0) {
+				System.out.println("Erro: valor menor que zero.");
+			} else if (valor > 0) {
+				System.out.println("Valor recebido com sucesso.");
+				numeros[i] = valor;
+				i++;
+			}
+		}
+		return numeros;
+	}
+
+	public static void acharMaior(int[] array) {
+		int maior = 0;
+
+		for (Integer num : array) {
+			if (num > maior) {
+				maior = num;
+			}
+		}
+		System.out.println("O maior valor do vetor \"numeros\" é: " + maior);
+	}
+
+	public static void somarElementos(int[] array) {
+		int soma = 0;
+		for (Integer num : array) {
+			soma += num;
+		}
+
+		System.out.println("A soma dos valores do vetor \"numeros\" é: " + soma);
+	}
+
+	public static boolean verificarOrdem(int[] array) {
+		int i;
+
+		for (i = 1; i < array.length; i++) {
+			if (array[i-1] > array[i]) {
+				return false;
+			}
+		}
+		return true;
+	}
+}
